@@ -1,4 +1,21 @@
-melon_cost = 1.00
+customer_orders = open("customer-orders.txt")
+MELON_COST = 1.00
+
+def customer_information(customer_orders):
+    for line in customer_orders:
+        line = line.strip()
+        customer_data = line.split("|")
+
+        customer_name = customer_data[1]
+        customer_order_quantity = customer_data[2]
+        customer_payment_total = customer_data[3]
+    return [customer_name, customer_order_quantity, customer_payment_total]
+
+
+
+
+
+
 
 customer1_name = "Joe"
 customer1_melons = 5
