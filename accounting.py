@@ -15,19 +15,20 @@ def customer_information(customer_orders = customer_orders):
 
     return customer_data
 
-def calculate_customer_payment_correct(customer_information):
+def calculate_customer_payment_correct(customer_information, cost = MELON_COST):
     for customer in customer_information:
         name = customer[0]
-        balance_due = customer[1]
+        melon_total = int(customer[1])
+        balance_due = customer[1] * cost
         total_paid = customer[2]
         if balance_due != total_paid:
             customer_balance = balance_due - total_paid
-            def owes_or_owed(customer_balance):
-                if customer_balance > 0:
-                    return "is owed:"
-                else:
+            def owes_or_owed(total_paid = total_paid, balance_due = balance_due):
+                if balance_due > total_paid:
                     return "owes:"
-            print(f"{name} paid {total_paid}. \nThe required payment is: {balance_due}.\nCustomer {owes_or_owed(customer_balance)} {customer_balance}.")
+                else:
+                    return "is owed:"
+            print(f"{name} paid ${total_paid}. \nThe required payment for {melon_total} melons is: ${balance_due}.\nCustomer {owes_or_owed()} ${customer_balance}.")
             print()
 customer_data = customer_information(customer_orders)
 calculate_customer_payment_correct(customer_data)
