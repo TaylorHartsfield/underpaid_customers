@@ -19,7 +19,7 @@ def customer_information():
 def calculate_customer_payment_correct(customer_information, cost = MELON_COST):
     for customer in customer_information:
         name = customer[0]
-        melon_total = int(customer[1])
+        melon_total = float(customer[1])
         balance_due = customer[1] * cost 
         total_paid = customer[2]
         if balance_due != total_paid:
