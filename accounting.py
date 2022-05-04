@@ -1,7 +1,8 @@
-customer_orders = open("customer-orders.txt")
 MELON_COST = 1.00
+customer_orders = open("customer-orders.txt")
 
-def customer_information(customer_orders = customer_orders):
+def customer_information():
+    customer_orders = open("customer-orders.txt")
     customer_data = []
     for line in customer_orders:
         line = line.strip()
@@ -12,7 +13,7 @@ def customer_information(customer_orders = customer_orders):
         customer_payment_total = float(customer[3])
 
         customer_data.append([customer_name, customer_order_quantity, customer_payment_total])
-
+    customer_orders.close()
     return customer_data
 
 def calculate_customer_payment_correct(customer_information, cost = MELON_COST):
@@ -31,5 +32,5 @@ def calculate_customer_payment_correct(customer_information, cost = MELON_COST):
             print(f"{name} paid ${total_paid}. \nThe required payment for {melon_total} melons is: ${balance_due}.\nCustomer {owes_or_owed()}.")
             print()
 
-customer_data = customer_information(customer_orders)
+customer_data = customer_information()
 calculate_customer_payment_correct(customer_data)
